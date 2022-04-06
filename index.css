@@ -1,11 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Yaldevi:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300;400&family=Roboto:wght@100&display=swap');
 *{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    font-family: 'Yaldevi', sans-serif;
+    font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
+    color: #ffffff;
 }
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top :0;
+    left: 0;
+    width: 100%;
+    background: burlywood;
+    z-index: -1;
+    }
+    canvas#defaultCanvas0 {
+    width: 100%;
+    height: 100vh;
+    }
 /* width */
 ::-webkit-scrollbar {
     width:7px;
@@ -31,15 +48,34 @@
   ::-webkit-scrollbar-thumb:hover {
     background:#94866d; 
   }
+.overlay-icone-chargement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position:fixed;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    z-index:-2;
+    opacity: 0;
+    animation:FirstAnimation 1s none;
+    transition: 7s All ease;
+}
+@keyframes FirstAnimation {
+    0%{opacity: 1;z-index: 10000;}
+    90%{opacity: 1;z-index: 10000;}
+    100%{opacity: 0;z-index:-2;}
+}
 section{
     position: relative;
     width: 100%;
     min-height: 100vh;
-    padding: 100px 35px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background:url(IMG_20190827_102323\ \(1\).jpg) no-repeat center,rgba(215, 216, 214, 0.835);
     background-blend-mode: screen;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -74,32 +110,36 @@ header ul li a{
     transition: 0.5s;
 }
 header ul li a:hover{
-    color:#C7B696;
+    color:#e4812f;
     text-shadow: rgb(0, 0, 0) 2px 1px 10px;
 }
-.content{
-    position: relative;
-    width: 100%;
+.content {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+    flex-direction:row;
+}
+.content .textBox{
+    margin: 30px;
+    width: fit-content;
 }
 .content .textBox h2{
-    color:rgba(126, 86, 11, 0.986);
-    font-size: 4.5em;
+    color:#e4812f;
+    font-size: 80px;
+    font-family: 'IBM Plex Serif', serif;
 }
 .content .textBox p {
     max-width: 771px;
     font-weight:600;
+    font-size: medium;
     margin-top: 16px;
 }
 .content .textBox a{
     display: inline-block;
     margin-top: 20px;
     padding:8px 20px;
-    border:2px solid rgba(126, 86, 11, 0.986); 
-    color: rgba(126, 86, 11, 0.986);
+    border:2px solid #e4812f;
+    color: #e4812f;
     font-weight:bold;
     letter-spacing: 1px;
     text-decoration: none;
@@ -109,48 +149,38 @@ header ul li a:hover{
     background: rgba(149, 150, 150, 0.603);
     color: #fff;
 }
-
-.socialBox{
-    position: absolute;
-    bottom:0;
-    right: 50%;
-    transform: translate(50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.content .image{
+    margin: 40px;
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 20% 100%);
+    animation: profile 2s infinite ease-in-out alternate;
 }
-.socialBox li{
-    list-style: none;
-    padding:0px 10px;
+@keyframes profile{
+    from{
+        clip-path: polygon(0 0, 80% 0, 100% 100%, 20% 100%);
+    }
+    to{
+        clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
+    }
 }
-.socialBox li a{
-    display: inline-block;
-    margin:5px 0px;
-    transform: scale(0.6);
-}
-.socialBox li a img{
-    width: 50px;
-    margin: 27px;
+.content .image img{
+    object-fit: cover;
+    width: 100%;
+    filter: grayscale(0.8);
+    opacity: 0.95;
 }
 .part2{
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     padding: 40px 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background:url(sean-pollock-PhYq704ffdA-unsplash.jpg) no-repeat center,rgba(215, 216, 214, 0.835);
-    background-blend-mode: screen;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;   
 }
 .content2{
     position: relative;
-    width: 85%;
-    height: 100vh;
+    width: 50%;
+    height:85vh;
     background-color: rgba(255, 255, 255, 0.767);
     display: flex;
     justify-content:center;
@@ -158,23 +188,106 @@ header ul li a:hover{
     align-items: center;
     text-align: center;
 }
-.part2 video{
+.contact{
+    position: relative;
+    width: 50%;
+    height:85vh;
+    background-color: rgba(79, 56, 56, 0.767);
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+}
+.contact h1{
+    color:#e4812f;
+    font-size: 35px;
+    font-family: 'IBM Plex Serif', serif;
+    margin-bottom: 40px;
+}
+.contact p{
+    color:#e4812f;
+    font-size: 24px;
+    font-family: 'IBM Plex Serif', serif;
+    margin: 17px 0;
+}
+form {
+    display: flex;
+    justify-content:center;
+    align-items:flex-start;
+    flex-direction: column;
+}
+form a{
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    right: -24px;
+    top: -24px;
+    transform: scale(0.6);
+    transition:1.3s all ease-in-out;
+}
+form a img{
+    width: 50px;
+    filter: invert(0.8);
+    transform: rotate(0deg);
+    
+}
+form a img:hover{
+    filter: invert(1);
+}
+input:nth-child(2){
+    width: 404px;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 1px solid black;
+    font-size: larger;
+    padding: 10px;
+    color: #000;
+}
+
+.button{
+    padding: 6px 33px;
+    border-radius: 100px;
+    background-color: #d68f0b;
+    color: rgb(0, 0, 0);
+    border: none;
+    margin-top: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition:0.5s all ease-out;
+    border: transparent 1px solid;
+}
+.button:hover{
+    background-color: #f7f7f73b;
+    border: #000 1px solid;
+    color: #ffffff;
+    box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+}
+textarea{
+    width: 404px;
+    height: 118px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    resize: none;
+    font-size: larger;
+    background-color: transparent;
+    color:#e4812f;
+    border: 2px solid #e4812f;
+}
+.caret{
+    caret-color: #000000;
 }
 .title2 h1{
+    color:#e4812f;
+    font-size: 30px;
+    font-family: 'IBM Plex Serif', serif;
     margin-bottom: 40px;
-    border-bottom: 1.5px solid #000;
 }
 .infoBox {
     font-size: 20px;
     text-align: start;
 }
 .infoBox p{
+    color: #000;
     margin-bottom: 10px;
     font-weight: 600;
 }
@@ -189,16 +302,16 @@ header ul li a:hover{
     mix-blend-mode:multiply;
 }
 .partEnd{
-    background:url(pexels-sibi-mathew-1092063.jpg) no-repeat center/cover,rgba(126, 86, 11, 0.986);
-    background-blend-mode: screen;
+    height: 420px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 .partEnd p{
-    text-transform: uppercase ;
-    font-size: 4em;
+    color:#e4812f;
+    font-size: 70px;
+    font-family: 'IBM Plex Serif', serif;
 }
 .downaldCv {
     color:rgb(0, 0, 0);
@@ -219,14 +332,15 @@ header ul li a:hover{
 }
 
 .part3{
-    background:url(pexels-pixabay-162539.jpg) no-repeat center/cover,rgba(126, 86, 11, 0.986);
-    background-blend-mode: screen;
     padding: 40px 0;
     flex-direction: column;
 }
 
 .part3 h1{
     margin-bottom: 48px;
+    color:#e4812f;
+    font-size: 30px;
+    font-family: 'IBM Plex Serif', serif;
 }
 
 .contentsBox{
@@ -240,26 +354,29 @@ header ul li a:hover{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 385px;
-    width: 263px;
+    height: 405px;
+    width: 250px;
     font-weight: 600;
     border-radius: 10px;
     text-align: start;
     margin: 10px 32px 39px 32px;
-    color: white;
     padding: 19px;
     font-size: small;
-    background-color: rgba(0, 0, 0, 0.767);
+    background-color:rgb(217 217 217 / 89%);
 }
 .element h2{
-    color:#C7B696;
+    color:#e4812f;
 }
 .element p{
     margin-top: auto;
+    color: rgb(11, 11, 11);
 }
 .element a{
     margin-top: auto;
-    mix-blend-mode: color-dodge;
+}
+.element img{
+    height:65px;
+    width: auto;
 }
 footer{
     position: relative;
@@ -289,7 +406,7 @@ footer a:hover{
     position: fixed;
     top:90vh;
     background: rgba(204, 204, 204, 0.726);
-    right: 10px;
+    left: 10px;
     border: 1px solid #000;
     max-width: 35px;
     border-radius: 10px;
@@ -307,26 +424,18 @@ footer a:hover{
     to{box-shadow:0px 0px 5px 2px #C7B696;}
 }
 .part4{
-    min-height: 100vh;
+    height: 200px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background:url(sean-pollock-PhYq704ffdA-unsplash.jpg) no-repeat center/cover,linear-gradient(160deg, #c7b696 0%, #ffffff 100%);
-    background-blend-mode:screen;
 }
 .part4 h1{
+    color:#e4812f;
+    font-family: 'IBM Plex Serif', serif;
     font-size: 60px;
     animation: color 2s infinite ease-in-out alternate-reverse;
-}
-@keyframes color{
-    from{color:rgba(126, 86, 11, 0.986);}
-    to{color: #573800;}
-}
-@-webkit-keyframes color{
-    from{color:rgba(126, 86, 11, 0.986);}
-    to{color: #573800;}
 }
 .scrollDown{
     height: 50px;
@@ -343,7 +452,7 @@ footer a:hover{
     position: absolute;
     top: 10%;
     left: 50%;
-    border: 2px solid rgba(126, 86, 11, 0.986);
+    border: 2px solid rgba(212, 108, 3, 0.986);
     height: 10px;
     width: 10px;
     transform: translate(-50%,-50%) rotate(45deg);
@@ -373,14 +482,6 @@ footer a:hover{
 .part5{
     width: 100%;
     min-height: 100vh;
-}
-.part5 video{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 .part5 .firstBox{
     height: 80vh;
@@ -427,18 +528,24 @@ footer a:hover{
 }
 .part5 h1{
     margin: 8px;
-    color:rgba(126, 86, 11, 0.986) ;
+    font-size: 25px;
+    color:transparent;
+    -webkit-text-stroke: #d68f0b 2px;
 }
 .part5 p{
     font-weight: 600;
 }
 .secondBox img {
     width: 116px;
+    height: auto;
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
 @media  only screen and  (max-width:991px){
+    main{
+        display: none;
+    }
     .content .textBox p {
         font-size: 19px;
     }
@@ -531,16 +638,37 @@ footer a:hover{
     .content2 {
         width: 100%;
         height: revert;
+        margin-bottom: 65px;
     }
     .infoBox {
         padding-left: 12px;
     }
+    .contact {
+        position: relative;
+        width: 95vw;
+        height: 100vh;
+        background-color: rgb(255 255 255);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    form a {
+        position: absolute;
+        right: -2px;
+        transform: scale(0.6);
+        transition: 1.3s all ease-in-out;
+        top: 89%;
+    }
     .logoBox1 a img {
         height: 43px;
     }
+    .part2{
+        flex-direction: column;
+    }
     .partEnd p {
         text-transform: uppercase;
-        font-size: 3em;
+        font-size: 33px;
         text-align: center;
     }
     .downaldCv{
@@ -549,6 +677,7 @@ footer a:hover{
 
     .part3 h1{
         margin-bottom: 24px;
+        text-align: center;
     }
 
     .contentsBox {
@@ -586,23 +715,6 @@ footer a:hover{
         border-radius: 50px;
         cursor: pointer;
     }
-    .scrollDown::before, .scrollDown::after {
-    content: " ";
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    border: 2px solid rgba(126, 86, 11, 0.986);
-    height: 15px;
-    width: 15px;
-    transform: translate(-50%,-50%) rotate(45deg);
-    border-top: transparent;
-    border-left: transparent;
-    animation: scrolldown 1s ease-in-out infinite;
- }
- .scrollDown::after{
-    top:20%;
-    animation-delay: .3s;
- }
  .part5 {
     flex-direction: column;
     font-size: medium;
@@ -633,6 +745,9 @@ footer a:hover{
 }
 
 @media only screen and (min-width: 1400px) {
+    header{
+        height: 58px;
+    }
     header ul li a {
         display: inline-block;
         margin: 63px;
@@ -642,7 +757,7 @@ footer a:hover{
         transition: 0.75s;
     }
     .content .textBox h2 {
-        color: rgba(126, 86, 11, 0.986);
+        color:#e4812f;
         font-size: 79px;
     }
     .content .textBox p {
@@ -671,7 +786,7 @@ footer a:hover{
     }
     .element {
         flex-direction: column;
-        height: 519px;
+        height: 600px;
         width: 437px;
         margin: 10px 11px 39px 11px;
         text-align: start;
@@ -705,31 +820,49 @@ footer a:hover{
         border-radius: 50px;
         cursor: pointer;
     }
-    .scrollDown::before, .scrollDown::after {
-        content: " ";
-        position: absolute;
-        top: 10%;
-        left: 50%;
-        border: 3px solid rgba(126, 86, 11, 0.986);
-        height: 14px;
-        width: 14px;
-        transform: translate(-50%,-50%) rotate(
-    45deg);
-        border-top: transparent;
-        border-left: transparent;
-        animation: scrolldown 1s ease-in-out infinite;
-    }
-    .scrollDown::after{
-        top:20%;
-        animation-delay: .3s;
-    }
     .part5 {
         font-size: x-large;
+    }
+    .contact h1 {
+        font-size: 39px;
+    }
+    .contact p {
+        font-size: 32px;
+    }
+    input:nth-child(2) {
+        width: 427px;
+        height: 34px;
+        font-size: 22px;
+    }
+    textarea {
+        width: 427px;
+        height: 176px;
+        font-size:22px;
+    }
+    .button {
+        font-size: large;
     }
     .secondBox img {
         width: 168px;
         margin-bottom: 13px;
         margin-top: 10px;
+    }
+    footer{
+        min-height: 45px;
+        font-size: 25px;
+    }
+    .part5 .firstBox {
+        height: 66vh;
+        width: 50%;
+    }
+    .part5 .secondBox {
+        height: 48vh;
+    }
+    .part5 .thirdBox {
+        height: 33vh;
+    }
+    .part5 .firdBox {
+        height: 21vh;
     }
 }
 
@@ -739,7 +872,7 @@ footer a:hover{
         font-size: 31px;
     }
     .content .textBox h2 {
-        color: rgba(126, 86, 11, 0.986);
+        color:#d68f0b;
         font-size: 112px;
     }
     .content .textBox p {
@@ -808,23 +941,6 @@ footer a:hover{
         bottom: 67px;
         border-radius: 50px;
         cursor: pointer;
-    }
-    .scrollDown::before, .scrollDown::after {
-        content: " ";
-        position: absolute;
-        top: 10%;
-        left: 50%;
-        border: 3px solid rgba(126, 86, 11, 0.986);
-        height: 18px;
-        width: 18px;
-        transform: translate(-50%,-50%) rotate(45deg);
-        border-top: transparent;
-        border-left: transparent;
-        animation: scrolldown 1s ease-in-out infinite;
-    }
-    .scrollDown::after{
-        top:20%;
-        animation-delay: .3s;
     }
     .part5 {
         font-size: xx-large;
