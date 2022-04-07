@@ -30,8 +30,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
-        <script src="sketch.js"></script>
+        <script>
+            let Head = document.getElementsByTagName('head');
+            let Script1 = document.createElement('script');
+            let Script2 = document.createElement('script');
+            let Script3 = document.createElement('script');
+            Script1.src = "https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js" ;
+            Script2.src =  "sketch.js";
+            Script3.src = "./rain.js";
+            if(screen.width > 991){
+                Head[0].appendChild(Script1)
+                Head[0].appendChild(Script2)
+            }else{
+                Head[0].appendChild(Script3)
+            }
+        </script>
+
     </head>
     <body>
         <script>
@@ -171,47 +185,49 @@
             <div class="firstBox"data-aos="fade-up">
                 <h1>Téchnique</h1>
                 <p>
-                    Connaissance des Matériaux de Construction
-                    Formulation de BCR 5,5/36/120 ,B 35 / 15 , B 27 / 31,5 selon la méthode de Dreux Gorisse
-                    Essais de laboratoire
-                    Lecture des plans , Etablissement des métrés 
-                    Géotechnique / Résistance des matériaux
-                    Etude de prix et planification de chantier
+                    • Conception de ponts<br>
+                    • Dimensionnement de routes<br> 
+                    • Calcul des structures<br>
+                    • Résistance des matériaux<br>
+                    • Fondations et stabilité des ouvrages<br> 
+                    • BAEL ,BPEL<br>
+                    • Connaissance des matériaux de construction <br>
+                    • Soutènements
                 </p>
             </div>
             <div class="secondBox" data-aos="fade-up">
                 <h1>Hard skills</h1>
                 <p>
-                    * Microsoft office<br>
-                    * AutoCad , ArchiCAD<br>
-                    * MS Project<br>
-                    * Robot structural analysis<br>
-                    * Piste 05<br>  
+                    • Microsoft office<br>
+                    • AutoCad , ArchiCAD<br>
+                    • MS Project<br>
+                    • Robot structural analysis<br>
+                    • Piste 05<br>  
                  </p>
             </div>
             <div class="thirdBox" data-aos="fade-up">
                 <h1>Soft skills</h1>
                 <p>
-                   * Travail en équipe<br>
-                   * Sens d’adaptation<br>
-                   * Aisance relationnelle<br>
-                   * Créativité et réactivité<br>
-                   * Capacité d’organisation<br>
-                   * Persévérance et perfectionnisme<br>  
+                   • Travail en équipe<br>
+                   • Sens d’adaptation<br>
+                   • Aisance relationnelle<br>
+                   • Créativité et réactivité<br>
+                   • Capacité d’organisation<br>
+                   • Persévérance et perfectionnisme<br>  
                 </p>
             </div>
             <div class="firdBox" data-aos="fade-up">
                 <h1>LANGUES</h1>
                 <p>
-                    Arabe     : Courant<br> 
-                    Français  : Courant<br>
-                    Anglais   : Bonne connaissance
+                    • Arabe     : Courant<br> 
+                    • Français  : Courant<br>
+                    • Anglais   : Bonne connaissance
                 </p>
             </div>
         </section>
         <div class="partEnd" id="partEnd">
-            <p data-aos="fade-down">télécharger mon cv ?</p>
-            <a class="downaldCv" href="./Ayoub Majidi CV-.pdf" data-aos="fade-down">
+            <p>télécharger mon cv ?</p>
+            <a class="downaldCv" href="./Ayoub Majidi CV-.pdf">
                 Cliquez ici
             </a>
         </div>
@@ -236,10 +252,8 @@
             function toggleMenu(){
                 var menuToggle = document.querySelector('.toggle')
                 var navigation = document.querySelector(".navigation")
-                var socialBox = document.querySelector('.socialBox')
                 menuToggle.classList.toggle('active')
                 navigation.classList.toggle('active')
-                socialBox.classList.toggle('active')
             }    
         </script>
         <script>
